@@ -1,0 +1,25 @@
+<main class="text-center bg-light">
+  <div class="p-5">
+    <div class="card col-12 col-md-8 col-lg-6 col-xl-4 border-3 border-success-subtle mx-auto my-5">
+      <img src="" class="card-img-top" alt="imagen planta {{ planta.id }}">
+      <div class="card-body my-4">
+        <h5 class="card-title">{{ planta.genero }} {{ planta.especie }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Género:</strong> {{ planta.genero }}</li>
+        <li class="list-group-item"><strong>Especie:</strong> {{ planta.especie }}</li>
+        <li class="list-group-item"><strong>Nombre común:</strong> {{ planta.[nombre_comun] }}</li>
+        <li class="list-group-item"><strong>Disponibilidad:</strong> {{#if planta.disponible}}Disponible{{else}}No disponible{{/if}}</li>
+        <li class="list-group-item"><strong>Cantidad disponible:</strong> {{ planta.cantidad }}</li>
+        <li class="list-group-item"><strong>Precio:</strong> $ {{ planta.precio }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="/plantas/{{ planta.id }}/edit" class="btn btn-light bg-pink border-0 card-link mx-2">Editar</a>
+        <form action="/plantas/{{ planta.id }}?_method=DELETE" method="POST" class="d-inline-block">
+          <button class="btn btn-light bg-success-subtle button-hover border-0" type="submit" onclick="return confirm('Seguro deseas eliminar esta planta?')">Eliminar</button>
+        </form>
+      </div>
+    </div>
+    <a href="/plantas" class="btn btn-light bg-pink fs-5 fw-bold px-4 py-2">Volver</a>
+  </div>
+</main>

@@ -13,6 +13,7 @@ const PORT = 3000;
 // middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // handlebars
@@ -45,7 +46,7 @@ app.use((err, req, res, next) => {
   let status = err.status || 500;
   let message;
 
-  if(!mensaje) {
+  if(!message) {
     switch(status) {
       case 400:
         message = "Solicitud incorrecta. Por favor revisa los datos enviados.";
@@ -65,7 +66,7 @@ app.use((err, req, res, next) => {
   res.status(status).render("error", { status, message });
 }); 
 
-sequelize.sync({ force: true })
+sequelize.sync({ alter: true })
    .then(() => {
         console.log("Base de datos ha sido sincronizada");
         app.listen(PORT, () => {

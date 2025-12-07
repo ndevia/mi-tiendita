@@ -1,4 +1,32 @@
-<main>
-<h1>Plantas</h1>
-
+<main class="text-center bg-light">
+  <div class="container p-5">
+    <h2 class="text-success-emphasis">
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4 fa-flip-horizontal"></i></span>
+      Plantas
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4"></i></span>
+    </h2>
+    <div class="py-5 text-success-emphasis row gap-1">
+      {{#if plantas.length}}
+        {{#each plantas as |planta|}}
+          <div class="card col-12 col-md-5 col-lg-3 my-5 mx-auto border-3 border-success-subtle">
+            <img src="" class="card-img-top" alt="imagen planta {{ planta.id }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ planta.genero }} {{ planta.especie }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{#if planta.disponible}}Disponible{{else}}No disponible{{/if}}</li>
+              <li class="list-group-item fw-bold">$ {{ planta.precio }}</li>
+            </ul>
+            <div class="card-body">
+              <a href="/plantas/{{ planta.id }}" class="btn btn-light bg-success-subtle button-hover border-0 card-link">Detalles</a>
+              <a href="/plantas/{{ planta.id }}/edit" class="btn btn-light bg-pink border-0 card-link">Editar</a>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <p class="fs-5">No hay plantas registradas</p>
+      {{/if}}
+    </div>
+    <a href="/plantas/new" class="btn btn-light bg-pink py-2 px-4 fs-5 fw-bold border-0 my-5">Agregar plantas</a>
+  </div>
 </main>

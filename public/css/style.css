@@ -1,3 +1,26 @@
+:root {
+  --color-rosado: rgba(214, 51, 132, 0.23);  
+  --color-verde: #D1E7DD;
+  --color-gris: #d3d4d5;
+}
+
+.bg-pink {
+  background-color: var(--color-rosado);
+}
+
+.text-pink {
+  color: var(--color-rosado);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-verde);
+  /* border-color: green; */
+}
+
+.button-hover:hover {
+  background-color: var(--color-gris) !important;
+}
+
 .error {
-  width: 600px;
+  max-width: 400px;
 }

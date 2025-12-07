@@ -14,10 +14,6 @@ const Planta = sequelize.define("planta", {
     type: DataTypes.STRING,
     allowNull: true
   },
-  parentales: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
-    allowNull: true
-  },
   precio: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
@@ -34,7 +30,6 @@ const Planta = sequelize.define("planta", {
   },
   disponible: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true
   }
 }, {
   tableName: "plantas",
