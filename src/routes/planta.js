@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const plantasController = require("../controllers/plantasController");
 
-// listar todas las plantas
+// ruta para listar todas las plantas
 router.get("/", plantasController.index);
 
 // rutas para crear plantas
@@ -16,7 +16,7 @@ router.get("/:id", plantasController.show);
 router.get("/:id/edit", plantasController.edit);
 router.put("/:id", plantasController.update);
 
-// rutas para eliminar una planta específica
+// ruta para eliminar una planta específica
 router.delete("/:id", plantasController.delete);
 
 module.exports = router;

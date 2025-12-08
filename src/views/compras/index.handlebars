@@ -1,0 +1,38 @@
+<main class="text-center bg-light">
+  <div class="container p-5">
+    <h2 class="text-success-emphasis">
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4 fa-flip-horizontal"></i></span>
+      Compras
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4"></i></span>
+    </h2>
+      <a href="/compras/new" class="btn btn-light bg-pink my-5 py-2 px-4 fw-bold">Nueva compra</a>
+    <div class="py-5 text-success-emphasis row gap-1">
+      {{#if compras.length}}
+        <table class="table table-bordered table-striped border-success-subtle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Total</th>
+              <th>Detalles</th>
+            </tr>
+          </thead>
+          <tbody> 
+            {{#each compras as |compra|}}
+              <tr>
+                <td>{{ compra.id }}</td>
+                <td>{{ compra.fecha }}</td>
+                <td>{{ compra.total }}</td>
+                <td>
+                  <a class="btn btn-light bg-pink px-4" href="/compras/{{ compra.id }}">Ver</a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <p class="fs-5">Aún no se ha realizado ninguna compra</p>
+      {{/if}}
+    </div>
+  </div>
+</main>

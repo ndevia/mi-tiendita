@@ -25,7 +25,7 @@ const Planta = sequelize.define("planta", {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
-      min: 1
+      min: 0
     }
   },
   disponible: {

@@ -1,0 +1,47 @@
+<main class="text-center bg-light">
+  <div class="container text-center bg-light p-5">
+    <h2 class="text-success-emphasis">
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4 fa-flip-horizontal"></i></span>
+      Nueva Compra
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4"></i></span>
+    </h2>
+    <div class="py-5 text-success-emphasis">
+      <form action="/compras" method="POST">
+        {{#if plantas.length}}
+          <table class="table table-bordered table-striped border-success-subtle border-3">
+            <thead class="bg-pink">
+              <tr class="bg-success">
+                <th>Planta</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Cantidad a comprar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each plantas as |planta|}}
+                <tr>
+                  <td>{{ planta.genero }} {{ planta.especie }}</td>
+                  <td>{{ planta.precio }}</td>
+                  <td>{{ planta.cantidad }}</td>
+                  <td>
+                    <input 
+                      type="number" 
+                      name="{{planta.id}}" 
+                      class="form-control d-inline-flex focus-ring focus-ring-success py-1 px-2 text-decoration-none border rounded-2"
+                      min="0" 
+                      max="{{planta.cantidad}}"
+                      value="0"
+                    />
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <button class="btn bg-success-subtle button-hover py-2 px-4 fw-bold mt-3">Confirmar compra</button>
+        </form>
+      {{ else }}
+        <p class="fs-5">No hay plantas disponibles</p>
+      {{/if}}
+    </div>
+  </div>
+</main>

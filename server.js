@@ -6,6 +6,7 @@ const { sequelize } = require("./src/models/Planta");
 
 // routers
 const plantasRouter = require("./src/routes/planta"); 
+const comprasRouter = require("./src/routes/compra");
 
 const app = express();
 const PORT = 3000;
@@ -26,6 +27,7 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 
 // middlewares de rutas
 app.use("/plantas", plantasRouter);
+app.use("/compras", comprasRouter);
 
 // rutas
 app.get("/", (req, res) => {

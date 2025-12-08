@@ -4,7 +4,7 @@ const { Planta } = require("../models/index");
 exports.index = async (req, res, next) => {
   try {
     const plantas = await Planta.findAll({
-      order: [['id', 'ASC']],
+      order: [["id", "ASC"]],
       raw: true
     });
       
