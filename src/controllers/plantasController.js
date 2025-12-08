@@ -22,7 +22,7 @@ exports.show = async (req, res, next) => {
     // validar que el id sea de tipo numérico
     if (!Number.isInteger(id) || id <= 0) {
       return res.status(400).render("error", {
-        status: 400, message: `El id no es válido.`
+        status: 400, message: "El id no es válido"
       });
     }
 

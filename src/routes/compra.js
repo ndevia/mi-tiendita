@@ -9,4 +9,7 @@ router.get("/", comprasController.index);
 router.get("/new", comprasController.new);
 router.post("/", comprasController.create);
 
+// ruta para ver el detalle de una compra en particular
+router.get("/:id", comprasController.show);
+
 module.exports = router;

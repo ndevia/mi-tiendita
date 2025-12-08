@@ -14,6 +14,43 @@ exports.index = async (req, res, next) => {
   }
 };
 
+// vista para ver el detalle de una compra
+exports.show = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    // validar que el id sea de tipo numérico
+    if (!Number.isInteger(id) || id <= 0) {
+      return res.status(400).render("error", {
+        status: 400, message: "El id no es válido"
+      });
+    }
+
+    const compra = await Compra.findByPk(id, { 
+      include: [
+        {
+          model: CompraPlanta,
+          as: "comprasPlanta",
+          include: [
+           { model: Planta, as: "planta" }
+          ]
+        }
+      ] 
+    });
+
+    // validar que exista una compra con el id ingresado
+    if (!compra) {
+      return res.status(404).render("error", {
+        status: 404, message: "Compra no encontrada"
+      });    
+    }
+    
+    const compraTextoPlano = compra.get({ plain: true });
+    res.render("compras/show", { compra: compraTextoPlano });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Formulario para generar una compra
 exports.new = async (req, res, next) => {

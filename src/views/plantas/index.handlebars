@@ -5,6 +5,7 @@
       Plantas
       <span class="mx-2"><i class="fa-brands fa-pagelines fs-4"></i></span>
     </h2>
+    <a href="/plantas/new" class="btn btn-light bg-pink my-5 py-2 px-4 fw-bold">Agregas Plantas</a>
     <div class="py-5 text-success-emphasis row gap-1">
       {{#if plantas.length}}
         {{#each plantas as |planta|}}
@@ -27,6 +28,5 @@
         <p class="fs-5">No hay plantas registradas</p>
       {{/if}}
     </div>
-    <a href="/plantas/new" class="btn btn-light bg-pink py-2 px-4 fs-5 fw-bold border-0 my-5">Agregar plantas</a>
   </div>
 </main>

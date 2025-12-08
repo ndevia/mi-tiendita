@@ -1,29 +1,35 @@
-<h1>Compra #<%= compra.id %></h1>
-<p><strong>Fecha:</strong> <%= compra.fecha.toLocaleString() %></p>
-<p><strong>Total:</strong> $<%= compra.total %></p>
-
-<h3 class="mt-4">Plantas compradas</h3>
-
-<table class="table table-bordered mt-3">
-  <thead>
-    <tr>
-      <th>Planta</th>
-      <th>Precio Unitario</th>
-      <th>Cantidad</th>
-      <th>Subtotal</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% items.forEach(i => { %>
-      <tr>
-        <td><%= i.planta.genero %> <%= i.planta.especie %></td>
-        <td>$<%= i.precio_unitario %></td>
-        <td><%= i.cantidad %></td>
-        <td>$<%= i.subtotal %></td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
-
-<a href="/compras" class="btn btn-secondary mt-3">Volver</a>
+<main class="text-center bg-light">
+  <div class="p-5">
+    <h2 class="text-success-emphasis">
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4 fa-flip-horizontal"></i></span>
+      Detalle Compra
+      <span class="mx-2"><i class="fa-brands fa-pagelines fs-4"></i></span>
+    </h2>
+    <div class="container py-5">
+      <p><strong>Fecha:</strong> {{ compra.fecha }}</p>
+      <p><strong>Total:</strong> {{ compra.total }}</p>
+      <h3 class="m-5">Plantas compradas</h3>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Planta</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each compra.comprasPlanta}}
+            <tr>
+              <td>{{ this.planta.genero }} {{ this.planta.especie }}</td>
+              <td>$ {{ this.precioUnitario }}</td>
+              <td>{{ this.cantidad }}</td>
+              <td>$ {{ this.subtotal }}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <a href="/compras" class="btn btn-light bg-pink fs-5 fw-bold px-4 py-2 border-0">Volver</a>
+  </div>
+</main>
