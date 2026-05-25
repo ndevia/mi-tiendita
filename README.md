@@ -71,7 +71,22 @@ El modelo CompraPlanta es una tabla intermedia que representa la relación entre
   - `node server.js`
 - Alternativamente, dado que el proyecto incluye `Nodemon`, también se puede ejecutar en modo desarrollo con:
   - `npm run dev`
-  
+
+## 🫘 Seeders
+
+El proyecto incluye datos de prueba para facilitar la visualización y pruebas de la aplicación. 
+
+Para resetear y poblar la base de datos con plantas de ejemplo, ejecutar:
+
+```
+node src/seeders/plantasSeeder.js
+```
+
+Este script:
+- Elimina los datos existentes
+- Reinicia los IDs
+- Agrega plantas de prueba a la base de datos
+
 ## 🌱 Rutas del Proyecto 
 ### 🍃 Rutas para Plantas 
 - `GET /plantas`: Muestra todas las plantas disponibles en la tienda.
