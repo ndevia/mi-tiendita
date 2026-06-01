@@ -1,6 +1,7 @@
 const Planta = require("./Planta");
 const Compra = require("./Compra");
 const CompraPlanta = require("./CompraPlanta");
+const Usuario = require("./Usuario");
 const sequelize = require("../config/db");
 
 // relación entre Planta y CompraPlanta (1 a muchos)
@@ -29,9 +30,23 @@ CompraPlanta.belongsTo(Planta, {
   onDelete: "CASCADE"  
 });
 
+// realación entre Usuario y Compra (1 a muchos)
+Usuario.hasMany(Compra, {
+  as: "compra",
+  foreignKey: "usuarioId",
+
+})
+
+Compra.belongsTo(Usuario, {
+  as: "usuario",
+  foreignKey: "usuarioId",
+  onDelete: "CASCADE"
+})
+
 module.exports = {
   sequelize,
   Planta,
   Compra,
-  CompraPlanta    
+  CompraPlanta,
+  Usuario
 }

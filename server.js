@@ -68,7 +68,7 @@ app.use((err, req, res, next) => {
   res.status(status).render("error", { status, message });
 }); 
 
-sequelize.sync({ alter: true })
+sequelize.sync({ force: true })
    .then(() => {
         console.log("Base de datos ha sido sincronizada");
         app.listen(PORT, () => {
